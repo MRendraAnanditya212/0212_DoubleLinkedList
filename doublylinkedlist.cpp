@@ -14,23 +14,17 @@ struct Node
 
 void addNode()
 {
-   
+    // pembuatan node pemberian value untuk data noMhs dan name 
+    Node *newNode = new Node(); // step 1 buat node baru
+    cout << "\nEnter the roll number of the student: ";
+    cin >> newNode->noMhs; // Assign value to the data field of the new node
+    cout << "\nEnter the name of student: ";
+    cin >> newNode->name; // Assign value to the data field of th
 
-// deklarasi prosedur addNode 
-// step 2; insert the new node at the beginning
-        // kondisi jika star tidak kosong dan noMhs node baru sama dengan noMhs
-        if (START != NULL && newNode ->noMhs == START->noMhs)
-    {
-        cout << "\033[31mDuplicate roll numbers not allowed\033[0m" << endl;
-        return;
-    }
-    // if the list is empty, make the new node the START 
-    // jika list kosong, maka node next nya adalah START 
-    
+// deklarasi pointer SMART dan pemberian nilai 
+Node *START = NULL;
 
-    // insert the new node in the list 
-    // kondisi jika star == null atau noMhs node baru <= noMhs start
-    if (START == NULL || newNode->noMhs <= START->noMhs)
+
     {
         
     newNode->next = START; // step 3: make the new node point to the first node
@@ -95,6 +89,23 @@ bool search(int rollNo, Node **previous, Node **current)
     }
     return (*current != NULL);
 }
+// pembuatan prosedur delete untuk menghapus data 
+void deleteNode()
+{
+    Node *previous, *current;
+    int rollNo;
+
+    cout << "\nEnter the roll number of the student whose record is to be delected: "
+    cin >> rollNo; // step 3: get the roll number number to be delected 
+
+    if (START == NULL)
+    {
+        cout << "List is empty" << endl;
+        return;
+    }
+
+    current = START; // step 1 start from the first node
+    previous = NULL:
 
 
 
