@@ -103,22 +103,7 @@ bool search(int rollNo, Node **previous, Node **current)
 }
 
 // pembuatan prosedur delete untuk menghapus data
-void deleteNode()
-{
-    Node *previous, *current;
-    int rollNo;
 
-    cout << "\nEnter the roll number of the student whose record is to be deleted: ";
-    cin >> rollNo; // step 3: get the roll number number to be deleted
-
-    if (START == NULL)
-    {
-        cout << "List is empty" << endl;
-        return;
-    }
-
-    current = START; // Step 1: start from the first node
-    previous = NULL;
 
     // locate the node to be deleted
     while (current != NULL && current->noMhs != rollNo)
@@ -239,7 +224,30 @@ int main()
                 char ch;
             cin >> ch;
 
-            
+            switch (ch)
+            {
+            case '1':
+                addNode();
+                break;
+            case '2':
+                deleteNode();
+                break;
+            case '3':
+                traverse();
+                break; 
+            case '4':
+                retraverse();
+                break;
+            case '5':
+                searchData();
+                break;
+            case '6':
+                return 0;
+            default:
+                cout << "\nInvalid option" << endl;
+                break;
+            }
+        }
         catch (exception &e)
         {
             cout << "Check for the values entered." << endl;
