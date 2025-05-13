@@ -24,12 +24,24 @@ void addNode()
 // deklarasi pointer SMART dan pemberian nilai 
 Node *START = NULL;
 
+    // deklarasi prosedur addNode 
+// step 2; insert the new node at the beginning
+        // kondisi jika star tidak kosong dan noMhs node baru sama dengan noMhs
+        if (START != NULL && newNode ->noMhs == START->noMhs)
+    {
+        cout << "\033[31mDuplicate roll numbers not allowed\033[0m" << endl;
+        return;
+    }
+    // if the list is empty, make the new node the START 
+    // jika list kosong, maka node next nya adalah START 
+    
 
+    // insert the new node in the list 
+    // kondisi jika star == null atau noMhs node baru <= noMhs start
+    if (START == NULL || newNode->noMhs <= START->noMhs)
     {
         
-    newNode->next = START; // step 3: make the new node point to the first node
-    // kondisi jika start tidak memiliki nilai atau tidak kosong 
-    if (START != NULL)
+    
     {
         START->prev = newNode; // step 4: make the first node point to the node 
     }
@@ -106,6 +118,22 @@ void deleteNode()
 
     current = START; // step 1 start from the first node
     previous = NULL:
+
+    // locate the node to be delected 
+    while (current != NULL && current->noMhs != rollNo)
+    {
+        previous = current;
+        current = current->next;
+    }
+
+    if (current == NULL)
+    {
+        cout << "\033[31mThe record with roll number " << rollNo << " not found\033[0m]" << endl;
+        return;
+    }
+
+    // node to be delected in the first node
+    if (current = START)
 
 
 
