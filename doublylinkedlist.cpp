@@ -177,7 +177,23 @@ void traverse()
     }
 }
 
+void retraverse()
+{
+    if(listEmpty())
+        cout << "\nList is empty" << endl;
+    else
+    {
+        cout << "\nRecords in descending order of roll number are: " <<endl;
+        Node *currentnode = START;
+        while ( currentnode ->next != NULL)
+            currentnode = currentnode->next;
 
+        while (currentnode != NULL)
+        {
+            cout << currentnode->noMhs << " " << currentnode->name <<endl;
+            currentnode= currentnode ->prev;
+        }
+    }
 
 }
 void searchData()
@@ -202,26 +218,7 @@ void searchData()
     }
 }
 
-int main()
-{
-    // perulangan selama bernilai benar untuk program utama double linkedlist
-    while (true)
-    {
-        try
-        {
-            cout << endl
-                 << "Menu";
-            cout << endl
-                 << "1. Menambah data kedalam list" << endl;
-            cout << "2. Menghapus data dari dalam list" << endl;
-            cout << "3. Menampilkan semua data didalam list dengan meningkat" << endl;
-            cout << "4. Menampilkan semua data didalam list dengan meningkat" << endl;
-            cout << "5. Mencari data dalam list" << endl;
-            cout << "6. keluar" << endl;
-            cout << endl
-                 << "Masukkan pilihan (1-5): "; 
-                char ch;
-            cin >> ch;
+
 
             switch (ch)
             {
