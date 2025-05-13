@@ -35,7 +35,15 @@ Node *START = NULL;
     // if the list is empty, make the new node the START 
     // jika list kosong, maka node next nya adalah START 
     
+    while (current != NULL && current->noMhs < newNode->noMhs)
+    {                            // step 1.c: traverse the list to find the
+        previous = current;      // step 1.d: move the previous to the current
+        current = current->next; // step 1.e: move the current to the next
+    }
 
+    // set nilai next node baru = current dan prev node baru = previous 
+    newNode->next = current; // step 4: Make the next field of the new node
+    newNode->prev = previous; // step 5: Make the previous field of the new
     // insert the new node in the list 
     // kondisi jika star == null atau noMhs node baru <= noMhs start
     if (START == NULL || newNode->noMhs <= START->noMhs)
@@ -61,20 +69,18 @@ else
     Node *previous = NULL; // step 1.b: previous node is Null initially
 
     // looping selama currnt != null dan noMhs dari current lebih kecil dari newNode
-    
+    while (current != NULL && current->noMhs < newNode->noMhs)
+    {                            // step 1.c: traverse the list to find the
+        previous = current;      // step 1.d: move the previous to the current
+        current = current->next; // step 1.e: move the current to the next
+    }
+
+    // set nilai next node baru = current dan prev node baru = previous 
+    newNode->next = current; // step 4: Make the next field of the new node
+    newNode->prev = previous; // step 5: Make the previous field of the new
 
     // kondisi jika current tidak sama dengan null
-    if (current != NULL)
-    {
-        current-> prev = newNode; // step 6: Make the previous field of the
-    }
-
-    // kondisi jika previous tidak sama dengan null 
-    if (previous != NULL)
-    {
-        previous->next = newNode; // step 7: Make the next field of the previous
-    }
-    // kondisi jika if previous sama dengan null
+    
     else 
     {
         // if previous is still NULL, it means newNode is now the first node
@@ -128,7 +134,72 @@ void deleteNode()
 
     // node to be delected in the first node
     if (current = START)
+    {
+        START = START->next; // step 2: update the START pointer 
+        if (START != NULL)
+        {
+            START->prev = NULL;
+        }
+    }
+    else 
+    { // mode to be delected is not the first node 
+        previous->next = current->next;
+        if (current->next != NULL)
+        { // if there's a successor, update its prev pointer
+            current->next->prev = previous;
+        }
+    }
 
+    // release the memory of the node marked as current 
+    delete current;
+    cout << "\x1b[32mRecord with roll number " << " delected\x1b[0m" <<
+}
+
+// method untuk mengecek apakah list kosong 
+bool listEmpty()
+{
+    return (START == NULL);
+}
+
+// prosedur traverse untuk menampilkan data secara urut 
+void traverse()
+{
+    if (listEmpty())
+    {
+        cout << "\nList Kosong\n";
+    }
+    else 
+    {
+        cout << "\nData didalam list adalah:\n";
+        Node *currentNode = START;
+        while (currentNode != NULL)
+        {
+            cout << currentNode->noMhs << endl;
+            currentNode = currentNode->next;
+        }
+        cout << endl;
+    }
+}  
+
+// prosedur untuk menampilkan dara secara urutan terbalik 
+void revtraverse()
+{
+    if (listEmpty())
+    cout << "\nList is empty" << endl; 
+    else
+    {
+        cout << "\nRecords in descending order of roll number are:" << endl;
+        Node *currentNode = START;
+        while (currentNode->next != NULL)
+            currentNode = currentNode->next;
+
+        while (currentNode != NULL)
+        {
+            cout << currentNode->noMhs << " " currentNode->name << endl;
+            currentNode = currentNode->prev;
+        }
+    }
+}
 
 
 
