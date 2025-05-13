@@ -149,11 +149,7 @@ void deleteNode()
     cout << "\x1b[32mrecord with roll number " << rollNo << " deleted\x1b[0m" << endl;
 }
 
-// method untuk mengecek apakah list kosong
-bool listEmpty()
-{
-    return (START == NULL);
-}
+
 
 // prosedur traverse untuk menampilkan data secara urut
 void traverse()
@@ -177,7 +173,46 @@ void traverse()
     }
 }
 
+void retraverse()
+{
+    if(listEmpty())
+        cout << "\nList is empty" << endl;
+    else
+    {
+        cout << "\nRecords in descending order of roll number are: " <<endl;
+        Node *currentnode = START;
+        while ( currentnode ->next != NULL)
+            currentnode = currentnode->next;
 
+        while (currentnode != NULL)
+        {
+            cout << currentnode->noMhs << " " << currentnode->name <<endl;
+            currentnode= currentnode ->prev;
+        }
+    }
+
+}
+void searchData()
+{
+    if (listEmpty() == true)
+    {
+        cout << "\nList is empty" << endl;
+    }
+
+    Node *prev, *curr;
+    prev = curr = NULL;
+    cout << "\nEnter the roll number of the student whose record you want to search: ";
+    int num;
+    cin >> num;
+    if (search(num, &prev, &curr) == false)
+        cout << "\nRecord not found" << endl;
+    else
+    {
+        cout << "\nRecord found" << endl;
+        cout << "\nRoll number: " << curr->noMhs << endl;
+        cout << "\nName: " << curr->name << endl;
+    }
+}
 
 int main()
 {
@@ -199,6 +234,37 @@ int main()
                  << "Masukkan pilihan (1-5): "; 
                 char ch;
             cin >> ch;
+
+            switch (ch)
+            {
+            case '1':
+                addNode();
+                break;
+            case '2':
+                deleteNode();
+                break;
+            case '3':
+                traverse();
+                break; 
+            case '4':
+                retraverse();
+                break;
+            case '5':
+                searchData();
+                break;
+            case '6':
+                return 0;
+            default:
+                cout << "\nInvalid option" << endl;
+                break;
+            }
+        }
+        catch (exception &e)
+        {
+            cout << "Check for the values entered." << endl;
+        }
+            
         }
     }
-}
+
+
