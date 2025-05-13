@@ -80,7 +80,17 @@ else
     newNode->prev = previous; // step 5: Make the previous field of the new
 
     // kondisi jika current tidak sama dengan null
-    
+    if (current != NULL)
+    {
+        current-> prev = newNode; // step 6: Make the previous field of the
+    }
+
+    // kondisi jika previous tidak sama dengan null 
+    if (previous != NULL)
+    {
+        previous->next = newNode; // step 7: Make the next field of the previous
+    }
+    // kondisi jika if previous sama dengan null
     else 
     {
         // if previous is still NULL, it means newNode is now the first node
@@ -89,18 +99,7 @@ else
 }  
 
 
-// pembuatan function search untuk mencari data 
-bool search(int rollNo, Node **previous, Node **current)
-{
-    *previous = NULL;
-    *current = START;
-    while (*current != NULL && (*current)->noMhs != rollNo)
-    {
-        *previous = *current;
-        *current = (*current)->next;
-    }
-    return (*current != NULL);
-}
+
 // pembuatan prosedur delete untuk menghapus data 
 void deleteNode()
 {
