@@ -53,18 +53,15 @@ Node *START = NULL;
     }
 }  
 // kondisi jika semua kondisi if tidak terpenuhi 
-
+else 
+{
+    // insert the new node in the middle or at the end 
+    // set nilai current = start and nilai previous = null
+    Node *current = START; // step 1.a: start from the first node 
+    Node *previous = NULL; // step 1.b: previous node is Null initially
 
     // looping selama currnt != null dan noMhs dari current lebih kecil dari newNode
-    while (current != NULL && current->noMhs < newNode->noMhs)
-    {                            // step 1.c: traverse the list to find the
-        previous = current;      // step 1.d: move the previous to the current
-        current = current->next; // step 1.e: move the current to the next
-    }
-
-    // set nilai next node baru = current dan prev node baru = previous 
-    newNode->next = current; // step 4: Make the next field of the new node
-    newNode->prev = previous; // step 5: Make the previous field of the new
+    
 
     // kondisi jika current tidak sama dengan null
     if (current != NULL)
