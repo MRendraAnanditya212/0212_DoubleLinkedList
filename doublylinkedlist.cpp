@@ -99,21 +99,19 @@ else
 }  
 
 
-
-// pembuatan prosedur delete untuk menghapus data 
-void deleteNode()
+// pembuatan function search untuk mencari data 
+bool search(int rollNo, Node **previous, Node **current)
 {
-    Node *previous, *current;
-    int rollNo;
-
-    cout << "\nEnter the roll number of the student whose record is to be delected: "
-    cin >> rollNo; // step 3: get the roll number number to be delected 
-
-    if (START == NULL)
+    *previous = NULL;
+    *current = START;
+    while (*current != NULL && (*current)->noMhs != rollNo)
     {
-        cout << "List is empty" << endl;
-        return;
+        *previous = *current;
+        *current = (*current)->next;
     }
+    return (*current != NULL);
+}
+
 
     current = START; // step 1 start from the first node
     previous = NULL:
