@@ -149,7 +149,11 @@ void deleteNode()
     cout << "\x1b[32mrecord with roll number " << rollNo << " deleted\x1b[0m" << endl;
 }
 
-
+// method untuk mengecek apakah list kosong
+bool listEmpty()
+{
+    return (START == NULL);
+}
 
 // prosedur traverse untuk menampilkan data secara urut
 void traverse()
@@ -173,23 +177,7 @@ void traverse()
     }
 }
 
-void retraverse()
-{
-    if(listEmpty())
-        cout << "\nList is empty" << endl;
-    else
-    {
-        cout << "\nRecords in descending order of roll number are: " <<endl;
-        Node *currentnode = START;
-        while ( currentnode ->next != NULL)
-            currentnode = currentnode->next;
 
-        while (currentnode != NULL)
-        {
-            cout << currentnode->noMhs << " " << currentnode->name <<endl;
-            currentnode= currentnode ->prev;
-        }
-    }
 
 }
 void searchData()
