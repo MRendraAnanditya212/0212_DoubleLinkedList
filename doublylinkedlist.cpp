@@ -156,29 +156,28 @@ bool listEmpty()
 }
 
 // prosedur traverse untuk menampilkan data secara urut
-
-
-void searchData()
+void traverse()
 {
-    if (listEmpty() == true)
+    if (listEmpty())
     {
-        cout << "\nList is empty" << endl;
+        cout << "\nList is empty\n";
     }
-
-    Node *prev, *curr;
-    prev = curr = NULL;
-    cout << "\nEnter the roll number of the student whose record you want to search: ";
-    int num;
-    cin >> num;
-    if (search(num, &prev, &curr) == false)
-        cout << "\nRecord not found" << endl;
     else
     {
-        cout << "\nRecord found" << endl;
-        cout << "\nRoll number: " << curr->noMhs << endl;
-        cout << "\nName: " << curr->name << endl;
+        cout << "\nnRecord in ascending order of roll number are:" << endl;
+        Node *currentNode = START;
+        while (currentNode != NULL)
+            currentNode = currentNode->next;
+
+        while (currentNode != NULL)
+        {
+            cout << currentNode->noMhs << " " << currentNode->name << endl;
+            currentNode = currentNode->prev;
+        }
     }
 }
+
+
 
 int main()
 {
