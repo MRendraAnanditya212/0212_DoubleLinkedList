@@ -41,7 +41,9 @@ Node *START = NULL;
     if (START == NULL || newNode->noMhs <= START->noMhs)
     {
         
-    
+        newNode->next = START; // step 3: make the new node point to the first node
+        // kondisi jika start tidak memiliki nilai atau tidak kosong 
+        if (START != NULL)
     {
         START->prev = newNode; // step 4: make the first node point to the node 
     }
@@ -51,12 +53,7 @@ Node *START = NULL;
     }
 }  
 // kondisi jika semua kondisi if tidak terpenuhi 
-else 
-{
-    // insert the new node in the middle or at the end 
-    // set nilai current = start and nilai previous = null
-    Node *current = START; // step 1.a: start from the first node 
-    Node *previous = NULL; // step 1.b: previous node is Null initially
+
 
     // looping selama currnt != null dan noMhs dari current lebih kecil dari newNode
     while (current != NULL && current->noMhs < newNode->noMhs)
